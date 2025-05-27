@@ -13,15 +13,21 @@
 
         <h1>First heading </h1>
 
-        <!-- Start from here -->
-
 	<form method="POST" action="/advice">
-		Enter Location :
+		<label> Enter Location for weather information of you area/city: </label>
 		<input type="text" placeholder="kolhapur" name="location">
 	</form>
 	<br>
 	
 	{% if location %}
+
+	<h3> Weather Data : </h3>
+	<ul>
+	{% for field , value in weather_data %}
+		<li> {{ Field }} : {{ value }} </li>
+	{% endfor %}
+	</ul>
+
 	<h3> advice : </h3>
 	{{ advice }}
 

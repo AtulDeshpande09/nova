@@ -10,6 +10,15 @@ app = Flask(__name__)
 Global_location = None
 Global_weather_data = None
 
+def create_weather_data(data):
+    temp = data['main']['temp']
+    humidity  = data['main']['humidity']
+    rain = data.get('rain',{}).get('6h',0)
+    weather_data = [("Temperature",temp),("Humidity",humidity),("Rain",rain)]
+    return weather_data
+
+
+
 # Main Index page
 @app.route("/")
 def index():
@@ -29,29 +38,38 @@ def weather_data():
         location = request.form['location']
         data = get_weather_info(location,api_key)
         
-        temp = data['main']['temp']
-        humidity  = data['main']['humidity']
-        rain = data.get('rain',{}).get('6h',0)
-
         Global_location = location
 
-        weather_data = [("Temperature",temp),("Humidity",humidity),("Rain",rain)]
+        weather_data = create_weather_data(data)
+
         Global_weather_data = weather_data
+        
         return render_template("weather.html" ,weather_data=weather_data)
 
     return render_template("weather.html",weather_data=weather_data)
 
 
-# Gives weather Based Advices
-@app.route("/advice",methods=['POST','GET'])
+def get_advice(weather_data):
+    return "You Reap what you Sow!!!"
+
+# Gives Weather based advice
+@app.route("/advice",methods=["POST","GET"])
 def advice():
-    advice = None
-    if Global_location:
-        advice = "This is some advice"
-        return render_template("advice.html",advice=advice)
-    
+
     location = None
-    return render_template('advice.html',advice=advice , location=location)
+    advice = None
+    weather_data = None
+
+    if request.method=='POST':
+        location = request.form['location']
+        data = get_weather_info(location,api_key)
+        weather_data = create_weather_data(data)
+
+        advice = get_advice(weather_data)
+ 
+        return render_template("advice.html",location=location ,weather_data=weather_data, advice=advice)
+
+    return render_template("advice.html",location=location ,weather_data=weather_data, advice=advice)
 
 
 @app.route("/fertilizer" , methods=["POST","GET"])
