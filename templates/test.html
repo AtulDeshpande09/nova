@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+    
+<head>
+        <title>MyPage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+        <h1>Enter City Name</h1>
+
+	<form method="POST" action="/test">
+		<label for="location">Enter Your Location : </label><br>
+		<input type="text" id="location" name="city" placeholder="Mumbai...">
+		<br>
+
+		<input type="submit">
+
+	</form>
+	<br>
+
+	{% if city %}
+		<h2>Weather Information</h2>
+		<h3>CITY : {{ city }}</h3>
+
+	{% endif %}
+
+</body>
+
+
+</html>

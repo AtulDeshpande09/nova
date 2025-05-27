@@ -4,7 +4,7 @@ import requests
 api_key = "52d129c124aaa073f4208583f3299b19"
 location = "Sangli"
 
-def get_weather_info(location:str):
+def get_weather_info(location:str , api_key:str):
     """
     This function fetches weather data from OWM
     """

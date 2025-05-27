@@ -1,0 +1,38 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+    
+<head>
+        <title>MyPage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+        <h1>Enter City Name</h1>
+
+	<form method="POST" action="/weather">
+		<label for="location">Enter Your Location : </label><br>
+		<input type="text" id="location" name="location" placeholder="Mumbai...">
+		<br>
+
+		<input type="submit">
+
+	</form>
+	<br>
+	{% if weather_data %}
+	<h2>Weather Information</h2>
+	<ul>
+		{% for field,value in weather_data %}
+		
+		<li><strong>{{ field }} : </strong> {{ value }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+
+</body>
+
+</html>
