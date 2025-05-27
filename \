@@ -17,9 +17,9 @@
 
 	<button onclick="location.href='/weather'" method="POST">Check Weather</button>
 	<br>
-	<button  onclick="location.href='/advice'" method="POST">Get Weather Advice</button>
+	<button action="/advice">Get Weather Advice</button>
 	<br>
-	<button  onclick="location.href='/fertilizer'">Recommend Fertilizer</button>
+	<button action="/fertilizer">Recommend Fertilizer</button>
 
 </body>
 
