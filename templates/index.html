@@ -1,26 +1,120 @@
-
 <!DOCTYPE HTML>
 <html lang="en">
-    
 <head>
-        <title>MyPage</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-</head>
+    <title>Smart Farming Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 2em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+            color: #1b5e20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            color: #2e7d32;
+        }
+
+        p.description {
+            max-width: 700px;
+            font-size: 1.2em;
+            color: #33691e;
+            margin-bottom: 2em;
+            line-height: 1.6;
+        }
+
+        .quote-box {
+            background-color: #f1f8e9;
+            border-left: 6px solid #66bb6a;
+            padding: 1em 1.5em;
+            font-style: italic;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 1em auto 2em;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h5 {
+            font-size: 1.6em;
+            margin-bottom: 1em;
+            color: #388e3c;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+        }
+
+        button {
+            background-color: #43a047;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 1.05em;
+            color: white;
+            cursor: pointer;
+            min-width: 220px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p.description {
+                font-size: 1em;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 0.8em;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
 <body>
 
-        <h1>First heading </h1>
+    <h1>🌿 Smart Farming Assistant</h1>
 
-	<h5> What do you want to do </h5>
+    <p class="description">
+        Welcome to your intelligent agriculture dashboard! Whether you’re preparing for today’s weather,
+        seeking crop advice, or planning fertilizer usage — you’re in the right place.
+    </p>
 
-	<button onclick="location.href='/weather'" method="POST">Check Weather</button>
-	<br>
-	<button  onclick="location.href='/advice'" method="POST">Get Weather Advice</button>
-	<br>
-	<button  onclick="location.href='/fertilizer'">Recommend Fertilizer</button>
+    <div class="quote-box">
+        📜 Quote for you: <br><br>
+        <strong>{{ quote }}</strong>
+    </div>
+
+    <h5>What would you like to do today?</h5>
+
+    <div class="button-container">
+        <button onclick="location.href='/weather'">🌦️ Check Weather</button>
+        <button onclick="location.href='/advice'">💬 Get Weather Advice</button>
+        <button onclick="location.href='/fertilizer'">🧪 Recommend Fertilizer</button>
+    </div>
 
 </body>
-
 </html>

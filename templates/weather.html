@@ -1,38 +1,127 @@
-
 <!DOCTYPE HTML>
 <html lang="en">
-    
 <head>
-        <title>MyPage</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
+    <title>Weather Forecast</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to top, #e3f2fd, #90caf9);
+            color: #0d47a1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: flex-start;
+            padding: 2em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        form {
+            background-color: #ffffffdd;
+            padding: 2em;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-size: 1.1em;
+            color: #1565c0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1em;
+            border-radius: 8px;
+            border: 1px solid #90caf9;
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+
+        h2 {
+            margin-top: 2em;
+            color: #0d47a1;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1em;
+            background-color: #ffffffcc;
+            border-radius: 12px;
+            padding: 1em;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        li {
+            margin: 0.5em 0;
+            font-size: 1.1em;
+            padding: 6px;
+            border-bottom: 1px solid #bbdefb;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 2em;
+            }
+            form {
+                padding: 1.2em;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-        <h1>Enter City Name</h1>
+    <h1>🌦️ Enter City Name</h1>
 
-	<form method="POST" action="/weather">
-		<label for="location">Enter Your Location : </label><br>
-		<input type="text" id="location" name="location" placeholder="Mumbai...">
-		<br>
+    <form method="POST" action="/weather">
+        <label for="location">Enter Your Location:</label>
+        <input type="text" id="location" name="location" placeholder="e.g. Mumbai">
+        <input type="submit" value="Check Weather">
+    </form>
 
-		<input type="submit">
-
-	</form>
-	<br>
-	{% if weather_data %}
-	<h2>Weather Information</h2>
-	<ul>
-		{% for field,value in weather_data %}
-		
-		<li><strong>{{ field }} : </strong> {{ value }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
+    {% if weather_data %}
+        <h2>Weather Information</h2>
+        <ul>
+            {% for field, value in weather_data %}
+                <li><strong>{{ field }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 </body>
-
 </html>

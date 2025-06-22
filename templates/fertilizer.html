@@ -1,25 +1,171 @@
-
 <!DOCTYPE HTML>
 <html lang="en">
-    
 <head>
-        <title>MyPage</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
+    <title>Fertilizer Recommendation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 2em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #f1f8e9, #c5e1a5);
+            color: #2e7d32;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+            color: #33691e;
+        }
+
+        .intro {
+            max-width: 700px;
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 2em;
+            color: #4e684e;
+        }
+
+        form {
+            background: #ffffffdd;
+            padding: 2em;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #388e3c;
+            margin-bottom: 0.3em;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 8px;
+            border: 1px solid #aed581;
+            background-color: #f9fbe7;
+        }
+
+        input[type="submit"] {
+            background-color: #66bb6a;
+            color: white;
+            font-size: 1em;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        h5 {
+            margin-top: 2em;
+            font-size: 1.5em;
+            color: #1b5e20;
+        }
+
+        .prediction-box {
+            margin-top: 1em;
+            background-color: #f0f4c3;
+            padding: 1.2em;
+            border-left: 6px solid #afb42b;
+            font-size: 1.1em;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .intro {
+                font-size: 1em;
+            }
+
+            form {
+                padding: 1.5em;
+            }
+
+            .prediction-box {
+                font-size: 1em;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-        <h1>Fertilizer </h1>
+    <h1>🌱 Fertilizer Recommendation</h1>
 
-        <form method="POST">
-		<input type="text">
+    <p class="intro">
+        Select your <strong>soil type</strong> and <strong>crop</strong> below to get personalized fertilizer recommendations that
+        optimize yield and preserve soil health. 🌾
+    </p>
 
-		<input type="submit">
+    <form method="POST">
 
-	</form>
+        <div>
+            <label for="soil">Select Soil Type:</label>
+            <select name="soil" id="soil">
+                <option value="0">Black</option>
+                <option value="1">Clayey</option>
+                <option value="2">Loamy</option>
+                <option value="3">Red</option>
+                <option value="4">Sandy</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="crop">Select Crop:</label>
+            <select name="crop" id="crop">
+                <option value="0">Barley</option>
+                <option value="1">Cotton</option>
+                <option value="2">Ground Nuts</option>
+                <option value="3">Maize</option>
+                <option value="4">Millets</option>
+                <option value="5">Oil seeds</option>
+                <option value="6">Paddy</option>
+                <option value="7">Pulses</option>
+                <option value="8">Sugarcane</option>
+                <option value="9">Tobacco</option>
+                <option value="10">Wheat</option>        
+            </select>
+        </div>
+
+        <input type="submit" value="Get Recommendation">
+
+    </form>
+
+    {% if prediction %}
+        <h5>🔍 Fertilizer Prediction</h5>
+        <div class="prediction-box">
+            {{ prediction }}
+        </div>
+    {% endif %}
 
 </body>
-
 </html>
