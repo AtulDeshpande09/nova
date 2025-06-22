@@ -4,24 +4,6 @@ A beautifully designed Flask web application that provides real-time agricultura
 
 ---
 
-## 📸 Screenshots
-
-### 🏠 Home Page
-![Home](nova_index_new.png)
-
-### 🌦️ Weather Page
-![Weather](nova_weather.png)
-
-### 🌦️ Weather Result
-![Weather Result](nova_weather_result.png)
-
-### 💬 Farming Advice
-![Advice](nova_advice.png)
-
-### 🌱 Fertilizer Recommendation
-![Fertilizer](fert.png)
-
----
 
 ## 🚀 Features
 
@@ -83,3 +65,23 @@ A beautifully designed Flask web application that provides real-time agricultura
    Visit http://127.0.0.1:5000
 
 ---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](nova_index_new.png)
+
+### 🌦️ Weather Page
+![Weather](nova_weather.png)
+
+### 🌦️ Weather Result
+![Weather Result](nova_weather_result.png)
+
+### 💬 Farming Advice
+![Advice](nova_advice.png)
+
+### 🌱 Fertilizer Recommendation
+![Fertilizer](fert.png)
+
+---
+
